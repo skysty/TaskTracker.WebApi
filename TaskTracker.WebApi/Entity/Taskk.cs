@@ -12,11 +12,12 @@ namespace TaskTracker.WebApi.Entity
         public int Id { get; set; }
         public string TaskName { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
-        public TaskStatus TaskStatus { get; set; }
+        public TaskkStatus TaskkStatus { get; set; }
         public string Description { get; set; }
         public int  Priority { get; set; }
         public DateTime? EditDate { get; set; }
-        public int ProjectId { get; set; }
+        public int ProjecttId { get; set; }
+        public Projectt Projectt  { get; set; }
 
     }
 }

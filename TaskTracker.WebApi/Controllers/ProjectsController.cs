@@ -19,10 +19,14 @@ namespace TaskTracker.WebApi.Controllers
     {
         private readonly TaskTrackerDbContext _context;
         private readonly IProjectRepository _projectRepository;
-        public ProjectsController(TaskTrackerDbContext context, IProjectRepository projectRepository)
+        private readonly ITaskRepository _taskRepository;
+        public ProjectsController(TaskTrackerDbContext context, 
+            IProjectRepository projectRepository,
+            ITaskRepository taskRepository)
         {
             _context = context;
             _projectRepository = projectRepository;
+            _taskRepository = taskRepository;
         }
 
         // GET: api/Projectts

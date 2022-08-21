@@ -1,23 +1,25 @@
 ﻿using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 using TaskTracker.WebApi.Enums;
 
-namespace TaskTracker.WebApi.Entity
+namespace TaskTracker.WebApi.Models
 {
-    public class Projectt
+    public class ProjectViewModel
     {
-        [Key]
         public int Id { get; set; }
         public string ProjectName { get; set; }
-        public DateTime StartDate  { get; set; }
+        public DateTime StartDate { get; set; }
         public DateTime CompletionDate { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public ProjectStatus ProjectStatus { get; set; }
-        public DateTime? EditDate  { get; set; }
+        public DateTime? EditDate { get; set; }
         public int Priority { get; set; }
-        public ICollection<Taskk> Taskks { get; set; }
+
+        public ICollection<TaskViewModel> TaskViewModels { get; set; }
     }
 }

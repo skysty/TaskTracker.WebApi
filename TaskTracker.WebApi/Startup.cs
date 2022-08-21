@@ -38,7 +38,8 @@ namespace TaskTracker.WebApi
             });
             services.AddDbContext<TaskTrackerDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddTransient<IProjectRepository, ProjectRepository>();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<ITaskRepository, TaskRepository>();
             services.AddFluentValidationAutoValidation();
             services.AddFluentValidationClientsideAdapters();
         }

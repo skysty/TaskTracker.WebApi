@@ -10,8 +10,8 @@ using TaskTracker.WebApi.Data;
 namespace TaskTracker.WebApi.Migrations
 {
     [DbContext(typeof(TaskTrackerDbContext))]
-    [Migration("20220820105145_initProject")]
-    partial class initProject
+    [Migration("20220821092900_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,6 +49,54 @@ namespace TaskTracker.WebApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("TaskTracker.WebApi.Entity.Taskk", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("EditDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProjecttId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TaskName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TaskkStatus")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjecttId");
+
+                    b.ToTable("Tasks");
+                });
+
+            modelBuilder.Entity("TaskTracker.WebApi.Entity.Taskk", b =>
+                {
+                    b.HasOne("TaskTracker.WebApi.Entity.Projectt", "Projectt")
+                        .WithMany("Taskks")
+                        .HasForeignKey("ProjecttId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Projectt");
+                });
+
+            modelBuilder.Entity("TaskTracker.WebApi.Entity.Projectt", b =>
+                {
+                    b.Navigation("Taskks");
                 });
 #pragma warning restore 612, 618
         }
