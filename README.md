@@ -1,4 +1,5 @@
 # TaskTracker.WebApi
-in this project used scoped  dependency injection
-entity frameworkCore
-net core 5.0
+in this project 
+1)used scoped  dependency injection
+2)entity frameworkCore
+3)net core 5.0
